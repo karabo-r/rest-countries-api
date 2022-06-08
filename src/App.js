@@ -19,14 +19,14 @@ const App = () => {
   }
   return (
     <Container>
-      <Header {...propsCollection}></Header>
-      <CountriesView></CountriesView>
+      <Header {...propsCollection}/>
+      <CountriesView {...propsCollection}/>
     </Container>
   )
 }
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 10vh 90vh;
+  grid-template-rows: 9vh 91vh;
 `
 export default App
