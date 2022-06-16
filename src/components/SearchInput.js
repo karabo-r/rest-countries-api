@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
+import { useRecoilState } from 'recoil'
+import { countrySearchAtom } from '../recoil/atoms/countryInputAtom'
 
 const SearchInput = () => {
+
+  const countryInputRef = useRef(null)
+
+  const [_, SetSearchCountry] = useRecoilState(countrySearchAtom)
+
+  function handleInput(){
+    const value = countryInputRef.current.value
+    if (value) SetSearchCountry(value) 
+  }
+
   return (
     <Container>
         <SearchIcon/>
-        <Input placeholder='Search for a country...'/>
+        <Input 
+        ref={countryInputRef}
+        onChange={handleInput}
+        placeholder='Search for a country...'/>
     </Container>
   )
 }
