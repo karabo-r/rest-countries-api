@@ -4,8 +4,10 @@ import CountriesView from './components/CountriesView'
 import Header from './components/Header'
 
 
+
 const App = () => {
 
+  
   const [isDarkTheme, setIsDarkTheme] = useState(false)
 
   function changeTheme(){
@@ -15,8 +17,9 @@ const App = () => {
 
   const propsCollection= {
     changeTheme,
-    isDarkTheme
+    isDarkTheme,
   }
+  
   return (
     <Container>
       <Header {...propsCollection}/>
