@@ -30,6 +30,9 @@ const App = () => {
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 9vh 91vh;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  grid-template-rows: 8vh 92vh;
 `
 export default App
