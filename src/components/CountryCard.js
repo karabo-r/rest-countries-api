@@ -1,27 +1,62 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CountryCard = () => {
+const CountryCard = (props) => {
   return (
     <Container>
-        <CountryImage>
-          Image
-        </CountryImage>
+        
+        <CountryFlag/>
         <CountryInformation>
-          Information
+          <h1>
+            South Africa
+            {props.countryName}
+          </h1>
+          <ul>
+            <li>
+              Population:
+              {props.countryPopulation}
+            </li>
+            <li>
+              Region:
+              {props.countryRegion}
+            </li>
+            <li>
+              Capital:
+              {props.countryCapital}
+            </li>
+          </ul>
         </CountryInformation>
     </Container>
   )
 }
 
 const Container = styled.div`
-    height: 20rem;
-    width: 16rem;
+    height: 18rem;
+    width: 15rem;
     display: grid;
+    grid-template-rows: 48% auto ;
     border: 1px solid black;
+    border-radius: 8px;
 `
-const CountryImage = styled.div`
+const CountryFlag = styled.div`
+background-color: rebeccapurple;
+background: ${props=>props.countryFlag};
+background-repeat: no-repeat;
+background-size: cover;
 `
-const CountryInformation = styled.div``
+const CountryInformation = styled.div`
+  padding: 1.2rem;
+
+  h1{
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  ul{
+    li{
+      margin-top: 6px;
+    }
+  }
+`
 
 export default CountryCard
