@@ -26,20 +26,19 @@ const SearchInput = () => {
 }
 
 const Container = styled.div`
-    margin-left: 8rem;
-    margin-top: 2rem;
-    width: 23rem;
-    height: 3rem;
+    width: 27rem;
+    height: 3.4rem;
     border-radius: 3px;
     display: flex;
     align-items: center;
+    /* border: 1px solid black; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
 `
 const SearchIcon = styled.div`
     background: ${'URL("images/search.svg")'};
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.4rem;
+    width: 1.4rem;
     background-repeat: no-repeat;
     background-size: cover;
     margin-left: 1.5rem;
