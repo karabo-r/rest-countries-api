@@ -1,49 +1,70 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import CountryCard from './CountryCard'
+import CountryViewExtention from './CountryViewExtention'
 import SearchInput from './SearchInput'
-import { useRecoilState } from 'recoil'
-import { countryData } from '../recoil/atoms/countryData'
-import SearchFilter from './SearchFilter'
+
 
 const CountriesView = () => {
 
-  const [data, setData] = useRecoilState(countryData)
+  const [countryExtend, setCountryExtend] = useState({
+    state: false,
+    country: ""
+  })
 
-  function fetchData(){
-    fetch("https://restcountries.com/v3.1/all")
-    .then(response=>response.json())
-    .then(newData=>{
-      // setData([])
-      setData({
-        data : newData
-      })
-      console.log(data);
+  function ViewCountryExtend(y){
+    setCountryExtend({
+      state: true,
+      country: y
     })
   }
 
-  useEffect(()=>{
-    fetchData()
-  }, [])
 
- 
+  const testStore = [
+    {
+      key: 1,
+      countryName: 'south africa'
+    },
+    {
+      key: 2,
+      countryName: 'germany'
+    },
+    {
+      key: 3,
+      countryName: 'france'
+    },
+    {
+      key: 4,
+      countryName: 'england'
+    }
+  ]
 
-  return (
+  const ProcessedCard = testStore.map(x=>{
+    return <CountryCard 
+    {...x}
+    extend={()=>ViewCountryExtend(x.countryName)}
+    />
+  })
+
+const countryName = countryExtend.country
+
+const propsCollection = {
+  countryName
+}
+
+return (
    <Container>
-    <SearchContainer>
-       <SearchInput/>
-       <SearchFilter/>
-    </SearchContainer>
-     <CardContainer>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-       <CountryCard/>
-      </CardContainer>
+    {countryExtend.state 
+    ? <CountryViewExtention {...propsCollection}/>
+    : <>
+        <SearchContainer>
+          <SearchInput/>
+        </SearchContainer>
+        <CardContainer>
+          {ProcessedCard}  
+        </CardContainer>
+    </>
+     }
    </Container>
   )
   }
@@ -56,7 +77,6 @@ const Container = styled.div`
 
 `
 const CardContainer = styled.div`
-  /* background-color: rebeccapurple; */
   height: 100%;
   display: grid;
   justify-content: space-between;
@@ -71,3 +91,4 @@ height: 7rem;
   align-items: center;
 `
 export default CountriesView
+

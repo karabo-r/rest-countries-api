@@ -3,12 +3,11 @@ import styled from 'styled-components'
 
 const CountryCard = (props) => {
   return (
-    <Container>
+    <Container onClick={props.extend}>
         
         <CountryFlag/>
-        <CountryInformation>
+        <CountryInformation key={props.key}>
           <h1>
-            South Africa
             {props.countryName}
           </h1>
           <ul>
@@ -37,6 +36,7 @@ const Container = styled.div`
     grid-template-rows: 48% auto ;
     border: 1px solid black;
     border-radius: 8px;
+    cursor: pointer;
 `
 const CountryFlag = styled.div`
 background-color: rebeccapurple;
